@@ -1,16 +1,19 @@
-<form hx-put="/contact/1" hx-target="this" hx-swap="outerHTML">
+<form hx-get="/index.html" hx-target="this" hx-swap="outerHTML">
   <div>
     <label>First Name</label>
-    <input type="text" name="firstName" value="Joe">
+    <input _="on load set @value to $firstname" type="text" name="firstName" id="firstName" value="">
   </div>
   <div class="form-group">
     <label>Last Name</label>
-    <input type="text" name="lastName" value="Blow">
+    <input _="on load set @value to $lastname" type="text" name="lastName" id="lastName" value="">
   </div>
   <div class="form-group">
     <label>Email Address</label>
-    <input type="email" name="email" value="joe@blow.com">
+    <input _="on load set @value to $email" type="email" name="email" id="email" value="">
   </div>
-  <button class="btn">Submit</button>
-  <button class="btn" hx-get="/contact/1">Cancel</button>
+  <button class="btn" _="on click
+                          set $firstname to value of firstName
+                          set $lastname to value of lastName
+                          set $email to value of email">Submit</button>
+  <button class="btn" hx-get="/index.html" >Cancel</button>
 </form>
